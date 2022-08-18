@@ -13,4 +13,6 @@ function computerPlay() {
 
 let computerChoice = computerPlay();
 
+let playerChoice = prompt("Please select between Rock, Paper, and Scissors")
+
 console.log(computerChoice)
