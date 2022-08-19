@@ -48,7 +48,13 @@ function playRound(playerSelection, computerChoice){
 
 }
 
-
+if (playerScore > computerScore) {
+    console.log("Player wins!!")
+} else if (playerScore < computerScore) {
+    console.log("Computer wins!!")
+} else {
+    console.log("No one won!!")
+}
 }
 
 game()
