@@ -9,8 +9,8 @@ function computerPlay() {
 let computerChoice = computerPlay();
 let playerChoice = prompt("Please select between Rock, Paper, and Scissors")
 
-let playerSelection = function playerCaseSensitive(playerChoice) {
-return playerChoice[0].toUpperCase() + playerChoice.substring(1)
+function playerCaseSensitive(playerChoice) {
+return playerChoice[0].toUpperCase() + playerChoice.substring(1).toLowerCase()
 }
 
 function playRound(playerSelection, computerChoice){
@@ -36,11 +36,11 @@ function playRound(playerSelection, computerChoice){
             computerScore++
         }
     else if (playerChoice == computerChoice) {
-            return tie
+            console.log(tie)
     }
 }
 
-console.log(playRound(playerChoice,computerChoice))
+console.log(playRound(playerCaseSensitive(playerChoice),computerChoice))
 
 
 
