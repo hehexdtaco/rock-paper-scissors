@@ -10,12 +10,7 @@ function game () {
     let playerScore = 0;
     let computerScore= 0;
     
-while (rounds < 5) {
-    rounds++;
-    computerPlay();
-    playerChoice = prompt("Please select between Rock, Paper, and Scissors")
-    playRound()
-    console.log(playRound(playerCaseSensitive(playerChoice), computerPlay()))
+
 
 function playerCaseSensitive(playerChoice) {
 return playerChoice[0].toUpperCase() + playerChoice.substring(1).toLowerCase()
@@ -46,7 +41,7 @@ function playRound(playerSelection, computerChoice){
     }
 }
 
-}
+
 
 if (playerScore > computerScore) {
     console.log("Player wins!!")
