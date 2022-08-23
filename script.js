@@ -1,6 +1,6 @@
 function computerPlay() {
     const choices = ["Rock","Paper","Scissors"]
-    let randomSelection = (Math.floor(Math.random() * 2))
+    let randomSelection = (Math.floor(Math.random() * 3))
     return choices[randomSelection]
 }
 
@@ -10,60 +10,78 @@ const paperSelection = document.querySelector('.Paper')
 
 const scissorsSelection = document.querySelector('.Scissors')
 
+const outcomeHtml = document.querySelector('.outcome')
 
-function game () {
-    let rounds = 0;
-    let playerScore = 0;
-    let computerScore= 0;
+
+// function game () {
+//     let rounds = 0;
+//     let playerScore = 0;
+//     let computerScore= 0;
     
-}
+// }
 
-function playerCaseSensitive(playerChoice) {
-return playerChoice[0].toUpperCase() + playerChoice.substring(1).toLowerCase()
-}
+// function playerCaseSensitive(playerChoice) {
+// return playerChoice[0].toUpperCase() + playerChoice.substring(1).toLowerCase()
+// }
 
 function playRound(playerSelection, computerChoice){
     let tie = "Both sides have the same choice, no points awarded"
     let playerWins = "The player has selected " + playerSelection + " which beats " + computerChoice;
     let playerLoses = "The player has selected " + playerSelection + " which loses to " + computerChoice;
 
-    if ((playerSelection == "Rock" && computerChoice == "Scissors") ||
+
+     if (playerSelection == computerChoice) {
+        const p = document.createElement('p');
+        p.innerText = tie
+        outcomeHtml.appendChild(p)
+        }
+
+    else if ((playerSelection == "Rock" && computerChoice == "Scissors") ||
         (playerSelection == "Paper" && computerChoice== "Rock") ||
         (playerSelection == "Scissors" && computerChoice == "Paper")) {
             
-            playerScore++
-            return playerWins
+           const p = document.createElement('p');
+           p.innerText = playerWins
+           outcomeHtml.appendChild(p)
         }
 
     else if ((computerChoice== "Rock" && playerSelection== "Scissors") ||
              (computerChoice== "Paper" && playerSelection== "Rock") ||
              (computerChoice == "Scissors" && playerSelection == "Paper")) {
          
-            computerScore++
-            return playerLoses
+            const p = document.createElement('p');
+            p.innerText = playerLoses
+            outcomeHtml.appendChild(p)
         }
-    else if (playerChoice == computerChoice) {
-            return tie
-    }
+    
 }
 
 
 
-if (playerScore > computerScore) {
-    console.log("Player wins!!")
-} else if (playerScore < computerScore) {
-    console.log("Computer wins!!")
-} else {
-    console.log("No one won!!")
-}
+// if (playerScore > computerScore) {
+//     console.log("Player wins!!")
+// } else if (playerScore < computerScore) {
+//     console.log("Computer wins!!")
+// } else {
+//     console.log("No one won!!")
+// }
 
 
 rockSelection.addEventListener('click', () => {
     const computerChoice = computerPlay();
-    const playerSelection = 'Rock'
+    const playerSelection = "Rock"
     playRound(playerSelection, computerChoice)
-
-
 })
 
+paperSelection.addEventListener('click',() => {
+    const computerChoice = computerPlay();
+    const playerSelection = 'Paper'
+    playRound(playerSelection, computerChoice)
+})
+
+scissorsSelection.addEventListener('click', () => {
+    const computerChoice = computerPlay();
+    const playerSelection = 'Scissors';
+    playRound(playerSelection,computerChoice)
+})
 
