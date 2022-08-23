@@ -4,13 +4,19 @@ function computerPlay() {
     return choices[randomSelection]
 }
 
+const rockSelection = document.querySelector('.Rock')
+
+const paperSelection = document.querySelector('.Paper')
+
+const scissorsSelection = document.querySelector('.Scissors')
+
 
 function game () {
     let rounds = 0;
     let playerScore = 0;
     let computerScore= 0;
     
-
+}
 
 function playerCaseSensitive(playerChoice) {
 return playerChoice[0].toUpperCase() + playerChoice.substring(1).toLowerCase()
@@ -50,6 +56,14 @@ if (playerScore > computerScore) {
 } else {
     console.log("No one won!!")
 }
-}
 
-game()
+
+rockSelection.addEventListener('click', () => {
+    const computerChoice = computerPlay();
+    const playerSelection = 'Rock'
+    playRound(playerSelection, computerChoice)
+
+
+})
+
+
