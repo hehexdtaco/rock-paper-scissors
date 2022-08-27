@@ -5,12 +5,11 @@ function computerPlay() {
 }
 
 const rockSelection = document.querySelector('.Rock')
-
 const paperSelection = document.querySelector('.Paper')
-
 const scissorsSelection = document.querySelector('.Scissors')
-
 const outcomeHtml = document.querySelector('.outcome')
+const playerScoreUpdate = document.querySelector('.player-score')
+const computerScoreUpdate = document.querySelector('.computer-score')
 
 let computerScore = 0;
 let playerScore = 0;
@@ -33,9 +32,10 @@ function playRound(playerSelection, computerChoice){
 
 
      if (playerSelection == computerChoice) {
-        const p = document.createElement('p');
-        p.innerText = tie
-        outcomeHtml.appendChild(p)
+        // const p = document.createElement('p');
+        // p.innerText = tie
+        // outcomeHtml.appendChild(p)
+        outcomeHtml.innerText = tie
         playerScore++
         console.log(playerScore)
         }
@@ -44,9 +44,10 @@ function playRound(playerSelection, computerChoice){
         (playerSelection == "Paper" && computerChoice== "Rock") ||
         (playerSelection == "Scissors" && computerChoice == "Paper")) {
             
-           const p = document.createElement('p');
-           p.innerText = playerWins
-           outcomeHtml.appendChild(p)
+        //    const p = document.createElement('p');
+        //    p.innerText = playerWins
+        //    outcomeHtml.append(p)
+           outcomeHtml.innerText = playerWins
            computerScore++
            console.log(computerScore)
         }
@@ -55,22 +56,15 @@ function playRound(playerSelection, computerChoice){
              (computerChoice== "Paper" && playerSelection== "Rock") ||
              (computerChoice == "Scissors" && playerSelection == "Paper")) {
          
-            const p = document.createElement('p');
-            p.innerText = playerLoses
-            outcomeHtml.appendChild(p)
+            // const p = document.createElement('p');
+            // p.innerText = playerLoses
+            // // outcomeHtml.append(p)
+            outcomeHtml.innerText = playerLoses
         }
     
 }
 
 
-
-// if (playerScore > computerScore) {
-//     console.log("Player wins!!")
-// } else if (playerScore < computerScore) {
-//     console.log("Computer wins!!")
-// } else {
-//     console.log("No one won!!")
-// }
 const gameWinner = (playerScore, computerScore) => {
     if (playerScore == 5) {
         const h1 = document.createElement('h1');
@@ -83,12 +77,17 @@ const gameWinner = (playerScore, computerScore) => {
     }
 }
 
+const liveScore = (playerScore, computerScore) => {
+   playerScoreUpdate.innerHTML = `Player score: ${playerScore}`
+   computerScoreUpdate.innerHTML = `Computer score ${computerScore}`
+}
 
 rockSelection.addEventListener('click', () => {
     const computerChoice = computerPlay();
     const playerSelection = "Rock"
     playRound(playerSelection, computerChoice)
     gameWinner(playerScore,computerScore)
+    liveScore(playerScore,computerScore)
 })
 
 paperSelection.addEventListener('click',() => {
@@ -96,6 +95,7 @@ paperSelection.addEventListener('click',() => {
     const playerSelection = 'Paper'
     playRound(playerSelection, computerChoice)
     gameWinner(playerScore,computerScore)
+    liveScore(playerScore,computerScore)
 })
 
 scissorsSelection.addEventListener('click', () => {
@@ -103,5 +103,6 @@ scissorsSelection.addEventListener('click', () => {
     const playerSelection = 'Scissors';
     playRound(playerSelection,computerChoice)
     gameWinner(playerScore,computerScore)
+    liveScore(playerScore,computerScore)
 })
 
